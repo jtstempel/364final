@@ -1,0 +1,24 @@
+{% if current_user.is_authenticated %}
+    <a href="{{ url_for('logout') }}">Sign Out {{current_user.username}}</a>
+{% else %}
+    <a href="{{ url_for('login') }}">Sign In</a>
+{% endif %}
+<br>
+<br>
+
+{% block navigation %}
+<ul><i>
+    <li><a href="{{ url_for('index') }}">Home</a>
+    <li><a href="{{ url_for('search') }}">Search</a></li>
+    <li><a href="{{ url_for('all_titles') }}">See saved titles</a></li>
+    <li><a href="{{ url_for('all_directors') }}">See saved directors</a></li>
+    <li><a href="{{ url_for('create_list') }}">Create a personal list</a></li>
+    <li><a href="{{ url_for('tvmovie_lists') }}">See your lists</a></li></li></i>
+</ul>
+<p>--------</p><br>
+{% endblock %}
+
+{% block main_content %}
+<h1>Welcome to OMDb!</h1>
+
+{% endblock %}

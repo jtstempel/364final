@@ -1,0 +1,39 @@
+<h1> All titles </h1>
+{% extends 'index.html' %}
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+<ul>
+{% for t in all_titles %}
+<li>
+  <b>{{ t.title }}</b> ({{ t.year }})<br>
+	IMDb Rating: {{ t.rating }} Your Ranking: {{ t.my_ranking }}<br>
+	Plot:<br>
+	{{ t.plot }}<br>
+  <form method="POST" action="/update/{{ t.title }}">
+     {{ form.hidden_tag() }}
+       {{ form.submit() }}
+ </form>
+
+ <form method="POST" action="/delete/{{ t.title }}">
+   {{ formdel.hidden_tag() }}
+     {{ formdel.submit() }}
+  </form>
+</li>
+<br>
+{% endfor %}
+</ul>
+
+{% if not all_titles %}
+There are no saved titles to show.
+{% endif %}
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

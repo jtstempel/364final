@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+{% block main_content %}
+<h1>All directors: </h1>
+{% for d in all_directors %}
+<li>
+	{{ d.name }}
+{% endfor %}
+		</li>
+{% endblock %}

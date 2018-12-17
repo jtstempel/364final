@@ -1,0 +1,17 @@
+<h1>My lists</h1>
+
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+<ul>
+{% for l in lists %}
+    <li><a href="http://localhost:5000/list/{{ l.id }}">{{ l.name }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

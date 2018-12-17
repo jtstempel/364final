@@ -1,0 +1,20 @@
+<h1>{{ list.name }}</h1>
+{% extends 'index.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block main_content %}
+
+{% for t in titles %}
+      <li>
+      <strong>{{ t.title }}</strong> ({{ t.year }})<br>
+    	IMDb Rating: {{ t.rating }} Your Ranking: {{ t.my_ranking }}<br>
+    	Plot:<br>
+    	{{ t.plot }}
+    <br><br>
+{% endfor %}
+</li>
+
+{% endblock %}

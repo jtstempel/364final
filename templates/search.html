@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block main_content %}
+{% if form %}
+<h1>Search Here: </h1>
+	<form method = 'GET' action="">
+		{{ form.hidden_tag() }}
+      	<p>{{ form.search.label }}{{ form.search() }}</p>
+				<p>{{ form.ranking.label }}{{ form.ranking() }}</p>
+      	{{ form.submit() }}
+  	</form>
+{% endif %}
+<div>
+	{% for message in get_flashed_messages() %}
+	{{ message }}
+	{% endfor %}
+</div>
+<h2> Title Info: </h2>
+{% if title_object %}
+	<b>{{ title_object.title }}</b> ({{ title_object.year }})<br>
+	IMDb Rating: {{ title_object.rating }} Your Ranking: {{ title_object.my_ranking }}<br>
+	Plot:
+	{{ title_object.plot }}
+
+{% else %}
+Sorry, no results exist for your search. Please retype a new title.
+{% endif %}
+
+{% endblock %}
